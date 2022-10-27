@@ -402,21 +402,21 @@ async function run() {
     }
 
     // Get role credentials if configured to do so
-    if (roleToAssume) {
-      const roleCredentials = await retryAndBackoff(async () => {
-        return await assumeRole({
-          sourceAccountId,
-          region,
-          roleToAssume,
-          roleExternalId,
-          roleDurationSeconds,
-          roleSessionName,
-          roleSkipSessionTagging,
-          webIdentityTokenFile,
-          webIdentityToken,
-        });
-      }, true);
-      exportCredentials(roleCredentials);
+    // if (roleToAssume) { TODO uncomment
+    //   const roleCredentials = await retryAndBackoff(async () => {
+    //     return await assumeRole({
+    //       sourceAccountId,
+    //       region,
+    //       roleToAssume,
+    //       roleExternalId,
+    //       roleDurationSeconds,
+    //       roleSessionName,
+    //       roleSkipSessionTagging,
+    //       webIdentityTokenFile,
+    //       webIdentityToken,
+    //     });
+    //   }, true);
+    //   exportCredentials(roleCredentials);
       // We need to validate the credentials in 2 of our use-cases
       // First: self-hosted runners. If the GITHUB_ACTIONS environment variable
       //  is set to `true` then we are NOT in a self-hosted runner.
