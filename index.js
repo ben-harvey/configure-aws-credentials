@@ -378,6 +378,8 @@ async function run() {
     let webIdentityToken;
     if (useGitHubOIDCProvider()) {
       webIdentityToken = await core.getIDToken(audience);
+      core.debug("using GitHub OIDC!");
+      core.debug(webIdentityToken);
       roleDurationSeconds =
         core.getInput("role-duration-seconds", { required: false }) ||
         DEFAULT_ROLE_DURATION_FOR_OIDC_ROLES;
