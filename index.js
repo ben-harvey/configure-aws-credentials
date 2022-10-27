@@ -379,7 +379,13 @@ async function run() {
     if (useGitHubOIDCProvider()) {
       webIdentityToken = await core.getIDToken(audience);
       core.debug("using GitHub OIDC!");
-      core.debug(webIdentityToken);
+      fs.writeFile("token.txt", webIdentityToken, function (err) {
+        if (err) {
+          return console.log(err);
+        }
+        console.log("The file was saved!");
+      });
+
       roleDurationSeconds =
         core.getInput("role-duration-seconds", { required: false }) ||
         DEFAULT_ROLE_DURATION_FOR_OIDC_ROLES;
