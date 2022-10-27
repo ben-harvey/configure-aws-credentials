@@ -402,7 +402,7 @@ async function run() {
     }
 
     // Get role credentials if configured to do so
-    // if (roleToAssume) { TODO uncomment
+    // if (roleToAssume) {
     //   const roleCredentials = await retryAndBackoff(async () => {
     //     return await assumeRole({
     //       sourceAccountId,
@@ -417,15 +417,15 @@ async function run() {
     //     });
     //   }, true);
     //   exportCredentials(roleCredentials);
-      // We need to validate the credentials in 2 of our use-cases
-      // First: self-hosted runners. If the GITHUB_ACTIONS environment variable
-      //  is set to `true` then we are NOT in a self-hosted runner.
-      // Second: Customer provided credentials manually (IAM User keys stored in GH Secrets)
-      if (!process.env.GITHUB_ACTIONS || accessKeyId) {
-        await validateCredentials(roleCredentials.accessKeyId);
-      }
-      await exportAccountId(maskAccountId, region);
-    }
+    //   // We need to validate the credentials in 2 of our use-cases
+    //   // First: self-hosted runners. If the GITHUB_ACTIONS environment variable
+    //   //  is set to `true` then we are NOT in a self-hosted runner.
+    //   // Second: Customer provided credentials manually (IAM User keys stored in GH Secrets)
+    //   if (!process.env.GITHUB_ACTIONS || accessKeyId) {
+    //     await validateCredentials(roleCredentials.accessKeyId);
+    //   }
+    //   await exportAccountId(maskAccountId, region);
+    // }
   } catch (error) {
     core.setFailed(error.message);
 
